@@ -1,8 +1,8 @@
 #Somar numero digitado com 10
 
 .data
-msg1: .asciiz "\nEnter a number:"
-msg2: .asciiz "\nSum:"
+msg1: .asciiz "\nEnter a number: "
+msg2: .asciiz "\nSum: "
 
 .text
 main:
