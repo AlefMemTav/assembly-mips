@@ -27,17 +27,19 @@ main:
 
 	bge $t0, $t1, se
 	j senao
-	j fimse
+
 
 	se:
 	li $v0, 1
 	add $a0, $t0, $zero
 	syscall
-
+	j fimse
+	
 	senao:
 	li $v0, 1
 	add $a0, $t1, $zero
 	syscall
 	
 	fimse:
+	
 
