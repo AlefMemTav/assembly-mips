@@ -9,5 +9,5 @@
 
 Ou:
 
-2. Se Windows, baixe o [WSL](https://learn.microsoft.com/pt-br/windows/wsl/install). Você instalará uma distrubição do Linux no Windows.
+1. Se Windows, baixe o [WSL](https://learn.microsoft.com/pt-br/windows/wsl/install). Você instalará uma distrubição do Linux no Windows.
 2. No terminal Linux escreva `spim -f nome-do-arquivo.s spim`
