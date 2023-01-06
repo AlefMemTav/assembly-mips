@@ -27,6 +27,6 @@
     syscall
 
     #Chamar exit
-		li $v0, 10
-		#Encerrar
-		syscall
+    li $v0, 10
+    #Encerrar
+    syscall

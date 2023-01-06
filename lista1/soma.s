@@ -19,13 +19,13 @@
     #Somar inteiros
     add $t3, $t0, $t1
     
-    #Chamr print_int
-    li $v0, 1
     #Armazenar soma em $a0
     add $a0, $t3, $zero
+    #Chamar print_int
+    li $v0, 1
     #Imprimir
     syscall
-
+    
     #Chamar exit
 		li $v0, 10
 		#Encerrar

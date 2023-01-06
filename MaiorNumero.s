@@ -4,43 +4,65 @@
 
 .text
 	main:
-		
-		#Escrever msg1
-		li $v0, 4
+		#Atribuir endereço de msg1 a $a0
 		la $a0, msg1
+		#Chamar print_str
+		li $v0, 4
+		#Imprimir
 		syscall
 
+		#Chamar read_int
 		li $v0, 5
+		#Ler
 		syscall
+		#Armazenar inteiro em $t0
 		add $t0, $v0, $zero
 
-		li $v0, 4
+		#Atribuir endereço de msg1 a $a0
 		la $a0, msg1
+		#Chamar print_str
+		li $v0, 4
+		#Imprimir
 		syscall
 
+		#Chamar read_int
 		li $v0, 5
+		#Ler
 		syscall
 		add $t1, $v0, $zero
 
-		li $v0, 4
+		#Atribuir endereço de msg2 a $a0
 		la $a0, msg2
+		#Chamar print_str
+		li $v0, 4
+		#Imprimir
 		syscall
 
+		#Ramificar quando maior ou igual
 		bge $t0, $t1, se
 		j senao
 
-
 		se:
-		li $v0, 1
-		add $a0, $t0, $zero
-		syscall
+			#Armazenar $t0 em $a0 
+			add $a0, $t0, $zero
+			#Chamar print_int
+			li $v0, 1
+			#Imprimir
+			syscall
+		#Pular para fimse
 		j fimse
 		
 		senao:
-		li $v0, 1
-		add $a0, $t1, $zero
-		syscall
-		
+			#Armazenar $t1 em $a0 
+			add $a0, $t1, $zero
+			#Chamar print_int
+			li $v0, 1
+			#Imprimir
+			syscall
+		#Encerrar o se
 		fimse:
-	
-
+		
+		#Chamar exit
+		li $v0, 10
+		#Encerrar
+		syscall

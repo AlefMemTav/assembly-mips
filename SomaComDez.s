@@ -8,10 +8,10 @@
 		#Atribuir 10 em $t1
 		li $t1, 10
 
+		#Atribuir endereço de str1 a $a0
+		la $a0, str1		
 		#Chamar print_str
 		li $v0, 4
-		#Atribuir endereço de str1 a $a0
-		la $a0, str1
 		#Imprimir mensagem
 		syscall
 
@@ -25,10 +25,10 @@
 		#Somar inteiro lido com 10
 		add $t0, $t0, $t1
 		
-		#Chamar print_str
-		li $v0, 4
 		#Atribuir endereço de str2 a $a0
 		la $a0, str2
+		#Chamar print_str
+		li $v0, 4
 		#Imprimir mensagem
 		syscall
 		
@@ -39,10 +39,10 @@
 		#Imprimir soma
 		syscall
 
-		#Chamar print_str
-		li $v0, 4
 		#Atribuir endereço de str3 a $a0
 		la $a0, str3
+		#Chamar print_str
+		li $v0, 4
 		#Imprimir
 		syscall
 
