@@ -2,9 +2,14 @@
   str: .asciiz "Ola Mundo\n"
 .text 
 	main:
-		li $v0, 4			#Chamar print_str
-		la $a0, str		#Atribuir endereço de str a $a0
-		syscall				#Imprimir
-
-		li $v0, 10		#Chamar exit
-		syscall				#Encerrar
+		#Chamar print_str
+		li $v0, 4
+		#Atribuir endereço de str a $a0
+		la $a0, str
+		#Imprimir
+		syscall				
+		
+		#Chamar exit
+		li $v0, 10		
+		#Encerrar
+		syscall		
