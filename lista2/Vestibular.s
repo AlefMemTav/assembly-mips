@@ -62,17 +62,27 @@
 
 		while:
 		beq $t0, $t4, fim  
-			lb $a0, 0($t1) # Ler byte da string
+			lb $a0, 0($t1) # Ler byte da string1
 			li $v0, 11 # Chamar print_char
 			syscall # Imprimir
-			
-			addi $t1, 1 # Avancar byte da string
-			addi $t4, $t4, 1 # i++
 
 			# Imprimir quebra de linha
 			la $a0, str	# Atribuir quebra de linha em $a0	
 			li $v0, 4 #Chamar print_str
 			syscall #Imprimir
+
+			lb $a0, 0($t2) # Ler byte da string2
+			li $v0, 11 # Chamar print_char
+			syscall # Imprimir
+
+			# Imprimir quebra de linha
+			la $a0, str	# Atribuir quebra de linha em $a0	
+			li $v0, 4 #Chamar print_str
+			syscall #Imprimir
+
+			addi $t1, 1 # Avancar byte da string1
+			addi $t2, 1 # Avancar byte da string2
+			addi $t4, $t4, 1 # i++
 
 			j while
 		fim:
