@@ -1,7 +1,10 @@
 # $t0 <= n + 2
 # $t1 <= stringInput
 # $t2 <= stringInputDois
-# $t4 <= i
+# $t3 <= i
+# $t4 <= char string1
+# $t5 <= char string2
+# $t6 <= acertos
 
 # stringSize <= n + 2
 
@@ -9,12 +12,12 @@
 	stringInput: .space 80
 	stringInputDois: .space 80
 	stringSize: .word 0 
-	str: .asciiz"\n"
 .text
 
 	main:
-		li $t4, 0 # Contador
-		
+		li $t3, 0 # Contador while
+		li $t6, 0 # Contador de acertos
+
 		li $v0, 5 # Chamar read_int
 		syscall # Ler
 		
@@ -35,12 +38,6 @@
 
 		add $t1, $a0, $zero # Salvar string1 em $t1
 
-		# Ver gabarito
-
-		la $a0, stringInput
-    li $v0, 4
-    syscall
-
 		# PROVA
 
 		# Ler prova
@@ -53,39 +50,34 @@
 		# Salvar prova
 
 		add $t2, $a0, $zero # Salvar string2 em $t2
-
-		# Ver prova
-
-		la $a0, stringInputDois
-    li $v0, 4
-    syscall
+		
+		sub $t0, $t0, 2 # 
 
 		while:
-		beq $t0, $t4, fim  
-			lb $a0, 0($t1) # Ler byte da string1
-			li $v0, 11 # Chamar print_char
-			syscall # Imprimir
+		beq $t3, $t0, fim
+			addi $t3, $t3, 1 # i++
 
-			# Imprimir quebra de linha
-			la $a0, str	# Atribuir quebra de linha em $a0	
-			li $v0, 4 #Chamar print_str
-			syscall #Imprimir
+			lb $a0, 0($t1) # Ler byte da string1
+			add $t4, $a0, $zero
 
 			lb $a0, 0($t2) # Ler byte da string2
-			li $v0, 11 # Chamar print_char
-			syscall # Imprimir
-
-			# Imprimir quebra de linha
-			la $a0, str	# Atribuir quebra de linha em $a0	
-			li $v0, 4 #Chamar print_str
-			syscall #Imprimir
+			add $t5, $a0, $zero
 
 			addi $t1, 1 # Avancar byte da string1
 			addi $t2, 1 # Avancar byte da string2
-			addi $t4, $t4, 1 # i++
-
+			
+			beq $t4, $t5, acerto
+			j while
+			
+			acerto:
+				add $t6, $t6, 1
+			
 			j while
 		fim:
+
+		add $a0, $t6, $zero # Armazenar acertos em $a0
+		li $v0, 1 # Chamar print_int
+		syscall # Imprimir
 
 	#Chamar exit
 	li $v0, 10	
